@@ -17,10 +17,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.synced_folder "/Users/jimg", "/host"
 
-   config.vm.provider "virtualbox" do |vb|
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "provisioning/dotfiles.yml"
+  end
 
-     # Use VBoxManage to customize the VM. For example to change memory:
-     vb.customize ["modifyvm", :id, "--memory", "1024"]
-   end
-
+  config.vm.provider "virtualbox" do |vb|
+    vb.customize ["modifyvm", :id, "--memory", "4096"]
+  end
 end
