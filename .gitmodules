@@ -1,3 +1,0 @@
-[submodule "provisioning/dotfiles"]
-	path = provisioning/dotfiles
-	url = git@github.com:JimGaylard/dotfiles.git
