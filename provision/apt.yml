@@ -1,5 +1,6 @@
 ---
-- hosts: all
+- name: apt playbook
+  hosts: devbox
   sudo: true
   tasks:
   - name: set repositories
@@ -7,10 +8,11 @@
   - name: update repository cache
     apt: cache_valid_time=3600 update_cache=yes
   - name: install packages
-    apt: name={{ item }} state=latest
+    apt: "name={{ item }} state=latest"
     with_items:
       - docker.io
       - git
-      - hg
-  - name: upgrade distro
-    apt: upgrade=dist
+      - mercurial
+      - tmux
+  #- name: upgrade distro
+  #  apt: upgrade=dist

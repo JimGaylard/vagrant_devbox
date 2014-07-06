@@ -1,0 +1,8 @@
+---
+- name: install dotfiles
+  hosts: devbox
+  tasks:
+    - name: install dotfiles
+      git: repo=git://github.com/JimGaylard/dotfiles.git dest=dotfiles
+    - name: install vundle for vim
+      git: repo=git://github.com/gmarik/Vundle.vim.git dest=.vim/bundle
