@@ -1,0 +1,6 @@
+---
+- name: vagrant dev box
+  hosts: all
+  user: jimg
+- include: apt.yml
+

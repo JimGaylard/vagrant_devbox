@@ -12,13 +12,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.vm.network "public_network"
 
   # config.ssh.forward_agent = true
-  #
-  config.vm.provision :shell, :path => "provision/apt.sh"
 
-  config.vm.synced_folder "/Users/jimg", "/host"
+  HOME = ENV['HOME']
+  config.vm.synced_folder HOME, "/host_home"
 
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "provisioning/dotfiles.yml"
+    ansible.playbook = "provision/main.yml"
+    ansible.verbose = "v"
   end
 
   config.vm.provider "virtualbox" do |vb|

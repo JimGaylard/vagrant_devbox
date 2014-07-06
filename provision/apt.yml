@@ -1,0 +1,16 @@
+---
+- hosts: all
+  sudo: true
+  tasks:
+  - name: set repositories
+    copy: src=files/etc/apt/sources.list dest=/etc/apt/sources.list owner=root group=root mode=0644
+  - name: update repository cache
+    apt: cache_valid_time=3600 update_cache=yes
+  - name: install packages
+    apt: name={{ item }} state=latest
+    with_items:
+      - docker.io
+      - git
+      - hg
+  - name: upgrade distro
+    apt: upgrade=dist
