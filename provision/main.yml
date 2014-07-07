@@ -1,0 +1,6 @@
+---
+- name: vagrant dev box
+  hosts: devbox
+- include: user.yml
+- include: apt.yml
+- include: dotfiles.yml
