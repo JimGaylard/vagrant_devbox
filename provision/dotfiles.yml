@@ -6,3 +6,9 @@
       git: repo=git://github.com/JimGaylard/dotfiles.git dest=dotfiles
     - name: install vundle for vim
       git: repo=git://github.com/gmarik/Vundle.vim.git dest=.vim/bundle
+    - name: link to workspace
+      shell: ln -s /host_home/workspace workspace
+    - name: link to Downloads
+      shell: ln -s /host_home/Downloads downloads
+    - name: link to Dropbox
+      shell: ln -s /host_home/Dropbox Dropbox
