@@ -2,10 +2,14 @@
 - name: install dotfiles
   hosts: devbox
   tasks:
-    - name: install dotfiles
+    - name: clone dotfiles
       git: repo=git://github.com/JimGaylard/dotfiles.git dest=dotfiles
-    - name: install vundle for vim
-      git: repo=git://github.com/gmarik/Vundle.vim.git dest=.vim/bundle
+    - name: clone vundle for vim
+      git: repo=git://github.com/gmarik/Vundle.vim.git dest=.vim/bundle/vundle
+    - name: install vim plugins
+      shell: free_form='vim +PluginInstall!'
+    - name: install dotfiles
+      shell: chdir=dotfiles creates=.vimrc.bundles ./makesymlinks.sh
     - name: link to workspace
       shell: ln -s /host_home/workspace workspace
     - name: link to Downloads
