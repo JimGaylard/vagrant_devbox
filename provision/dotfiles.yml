@@ -6,13 +6,14 @@
       git: repo=git://github.com/JimGaylard/dotfiles.git dest=dotfiles
     - name: clone vundle for vim
       git: repo=git://github.com/gmarik/Vundle.vim.git dest=.vim/bundle/vundle
-    - name: install vim plugins
-      shell: free_form='vim +PluginInstall!'
     - name: install dotfiles
       shell: chdir=dotfiles creates=.vimrc.bundles ./makesymlinks.sh
+    - name: install vim plugins
+      # this is not currently working
+      shell: free_form="vim +PluginInstall +qall"
     - name: link to workspace
-      shell: ln -s /host_home/workspace workspace
+      shell: creates=workspace free_form="ln -s /host_home/workspace workspace"
     - name: link to Downloads
-      shell: ln -s /host_home/Downloads downloads
+      shell: creates=downloads free_form="ln -s /host_home/Downloads downloads"
     - name: link to Dropbox
-      shell: ln -s /host_home/Dropbox Dropbox
+      shell: creates=Dropbox free_form="ln -s /host_home/Dropbox Dropbox"
