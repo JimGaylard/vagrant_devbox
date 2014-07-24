@@ -7,13 +7,13 @@
     - name: clone vundle for vim
       git: repo=git://github.com/gmarik/Vundle.vim.git dest=.vim/bundle/vundle
     - name: install dotfiles
-      shell: chdir=dotfiles creates=.vimrc.bundles ./makesymlinks.sh
+      command: chdir=dotfiles creates='.vimrc.bundles' ./makesymlinks.sh
     - name: install vim plugins
       # this is not currently working
-      shell: free_form="vim +PluginInstall +qall"
+      command: creates=.vim/bundle/nerdtree/README.markdown /usr/bin/vim +PluginInstall +qall
     - name: link to workspace
-      shell: creates=workspace free_form="ln -s /host_home/workspace workspace"
+      file: src=/host_home/workspace dest=workspace state=link
     - name: link to Downloads
-      shell: creates=downloads free_form="ln -s /host_home/Downloads downloads"
+      file: src=/host_home/Downloads dest=downloads state=link
     - name: link to Dropbox
-      shell: creates=Dropbox free_form="ln -s /host_home/Dropbox Dropbox"
+      file: src=/host_home/Dropbox dest=dropbox state=link
