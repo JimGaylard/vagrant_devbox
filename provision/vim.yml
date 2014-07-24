@@ -1,0 +1,6 @@
+---
+- name: install latest vim
+  hosts: devbox
+  tasks:
+    - name: clone vim source
+      hg: dest=/usr/local/src/vim repo='https://vim.googlecode.com/hg/'
