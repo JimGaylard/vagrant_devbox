@@ -27,5 +27,7 @@
     file: src=/usr/bin/docker.io dest=/usr/bin/docker state=link
   - name: add vagrant user to docker group
     user: append=yes groups=docker name=vagrant
+  - name: set readline defaults
+    copy: src=files/etc/inputrc dest=/etc/inputrc owner=root mode=0644
   #- name: upgrade distro
   #  apt: upgrade=dist
