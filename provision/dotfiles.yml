@@ -8,9 +8,10 @@
       git: repo=git://github.com/gmarik/Vundle.vim.git dest=.vim/bundle/vundle
     - name: install dotfiles
       command: chdir=dotfiles creates='.vimrc.bundles' ./makesymlinks.sh
+    - name: copy tmp vimrc to install plugins
+      copy: src=files/tmp/.tmpvimrc dest=/tmp/.tmpvimrc
     - name: install vim plugins
-      # this is not currently working
-      command: creates=.vim/bundle/nerdtree/README.markdown /usr/bin/vim +PluginInstall +qall
+      command: creates=.vim/bundle/nerdtree/README.markdown /usr/bin/vim -u /tmp/.tmpvimrc +PluginInstall! +qall
     - name: link to workspace
       file: src=/host_home/workspace dest=workspace state=link
     - name: link to Downloads
