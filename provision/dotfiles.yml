@@ -3,7 +3,7 @@
   hosts: devbox
   tasks:
     - name: clone dotfiles
-      git: repo=git://github.com/JimGaylard/dotfiles.git dest=dotfiles
+      git: repo=ssh://git@github.com/JimGaylard/dotfiles.git dest=dotfiles
     - name: clone vundle for vim
       git: repo=git://github.com/gmarik/Vundle.vim.git dest=.vim/bundle/vundle
     - name: install dotfiles
