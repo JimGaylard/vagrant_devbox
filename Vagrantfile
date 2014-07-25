@@ -8,7 +8,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   HOME = ENV['HOME']
 
   config.vm.box = "ubuntu-14.04-cloud-image"
-  config.vm.hostname = "vagrant-dev-#{`hostname`}"
+  config.vm.hostname = "vagrant-#{`hostname`}"
 
   config.vm.network "private_network", ip: "192.168.34.20"
   config.ssh.forward_agent = true
