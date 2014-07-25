@@ -13,6 +13,15 @@
       - docker.io
       - git
       - mercurial
-      - tmux
+      - ctags
+      - gnupg2
+      - jq
+      - keychain
+      - mtr
+      - netcat
+      - nmap
+      - ruby-build
+      - silversearcher-ag
+      - tree
   #- name: upgrade distro
   #  apt: upgrade=dist
