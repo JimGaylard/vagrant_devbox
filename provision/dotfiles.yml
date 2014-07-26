@@ -14,7 +14,5 @@
       command: creates=.vim/bundle/nerdtree/README.markdown /usr/bin/vim -u /tmp/.tmpvimrc +PluginInstall! +qall
     - name: link to workspace
       file: src=/host_home/workspace dest=workspace state=link
-    - name: link to Downloads
-      file: src=/host_home/Downloads dest=downloads state=link
     - name: link to Dropbox
-      file: src=/host_home/Dropbox dest=dropbox state=link
+      file: src=/host_home/Dropbox dest=dropbox state=link force=yes
