@@ -7,10 +7,11 @@
     copy: src=files/etc/apt/sources.list dest=/etc/apt/sources.list owner=root group=root mode=0644
   - name: update repository cache
     apt: cache_valid_time=3600 update_cache=yes
+  - name: install docker
+    shell: 'curl -s https://get.docker.io/ubuntu/ | sudo sh' creates=/usr/bin/docker
   - name: install packages
     apt: "name={{ item }} state=latest"
     with_items:
-      - docker.io
       - git
       - mercurial
       - ctags
@@ -23,8 +24,7 @@
       - ruby-build
       - silversearcher-ag
       - tree
-  - name: symlink for docker command
-    file: src=/usr/bin/docker.io dest=/usr/bin/docker state=link
+      - keychain
   - name: add vagrant user to docker group
     user: append=yes groups=docker name=vagrant
   - name: set readline defaults
