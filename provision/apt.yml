@@ -7,8 +7,10 @@
     copy: src=files/etc/apt/sources.list dest=/etc/apt/sources.list owner=root group=root mode=0644
   - name: update repository cache
     apt: cache_valid_time=3600 update_cache=yes
+  - name: install kernel support for aufs
+    apt: "name=linux-image-extra-{{ ansible_kernel }} state=latest"
   - name: install docker
-    shell: 'curl -s https://get.docker.io/ubuntu/ | sudo sh' creates=/usr/bin/docker
+    shell:  creates=/usr/bin/docker curl -s https://get.docker.io/ubuntu/ | sudo sh
   - name: install packages
     apt: "name={{ item }} state=latest"
     with_items:
@@ -21,10 +23,37 @@
       - mtr
       - netcat
       - nmap
-      - ruby-build
       - silversearcher-ag
       - tree
       - keychain
+  - name: clone ruby-build from git (more up-to-date)
+    git: repo=git://github.com/sstephenson/ruby-build.git dest=/usr/local/src/ruby-build
+  - name: install ruby-build
+    command: ./install.sh
+    args:
+      chdir: /usr/local/src/ruby-build
+      creates: /usr/local/bin/ruby-build
+  - name: make ruby directory
+    file: path=/opt/rubies/ruby-2.1.2 state=directory
+  - name: download chruby
+    command: wget -O /usr/local/src/chruby-0.3.8.tar.gz https://github.com/postmodern/chruby/archive/v0.3.8.tar.gz
+    args:
+      creates: /usr/local/src/chruby-0.3.8.tar.gz
+  - name: untar chruby
+    unarchive: copy=no src=/usr/local/src/chruby-0.3.8.tar.gz dest=/usr/local/src/ creates=/usr/local/src/chruby-0.3.8/
+  - name: install chruby
+    command: /usr/bin/make install
+    args:
+      chdir: /usr/local/src/chruby-0.3.8
+      creates: /usr/local/share/chruby/chruby.sh
+  - name: install bundler for ruby
+    command: /opt/rubies/ruby-2.1.2/bin/gem install bundler
+    args:
+      creates: /opt/rubies/ruby-2.1.2/bin/bundle
+  - name: build ruby 2.1.2
+    command: /usr/local/bin/ruby-build 2.1.2 /opt/rubies/ruby-2.1.2
+    args:
+      creates: /opt/rubies/ruby-2.1.2/bin/ruby
   - name: add vagrant user to docker group
     user: append=yes groups=docker name=vagrant
   - name: set readline defaults
