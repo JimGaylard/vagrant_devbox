@@ -3,11 +3,14 @@
   hosts: devbox
   tasks:
     - name: clone dotfiles
-      git: repo=ssh://git@github.com/JimGaylard/dotfiles.git dest=dotfiles
+      git: repo=git://github.com/JimGaylard/dotfiles.git dest=dotfiles
     - name: clone vundle for vim
       git: repo=git://github.com/gmarik/Vundle.vim.git dest=.vim/bundle/vundle
     - name: install dotfiles
-      command: chdir=dotfiles creates='.vimrc.bundles' ./makesymlinks.sh
+      command: ./makesymlinks.sh
+      args:
+        chdir: dotfiles
+        creates: ~/.vimrc.bundles
     - name: copy tmp vimrc to install plugins
       copy: src=files/tmp/.tmpvimrc dest=/tmp/.tmpvimrc
     - name: install vim plugins
