@@ -1,0 +1,9 @@
+---
+- name: docker playbook
+  hosts: devbox
+  tasks:
+  - name: install nsenter
+    command: docker run --rm -v /usr/local/bin:/target jpetazzo/nsenter
+    args:
+      creates: /usr/local/bin/nsenter
+
