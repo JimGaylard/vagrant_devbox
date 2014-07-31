@@ -34,8 +34,20 @@
     args:
       chdir: /usr/local/src/ruby-build
       creates: /usr/local/bin/ruby-build
-  - name: make ruby directory
-    file: path=/opt/rubies/ruby-2.1.2 state=directory
+  - name: make ruby directories
+    file: "path={{ item }} state=directory"
+    with_items:
+    - /opt/rubies/ruby-2.1.2
+    - /opt/rubies/ruby-2.0.0-p481
+    - /opt/rubies/ruby-1.9.3-p547
+  - name: build rubies
+    command: "/usr/local/bin/ruby-build {{ item }} /opt/rubies/ruby-{{ item }}"
+    args:
+      creates: "/opt/rubies/ruby-{{ item }}/bin/ruby"
+    with_items:
+    - 1.9.3-p547
+    - 2.0.0-p481
+    - 2.1.2
   - name: download chruby
     command: wget -O /usr/local/src/chruby-0.3.8.tar.gz https://github.com/postmodern/chruby/archive/v0.3.8.tar.gz
     args:
@@ -47,10 +59,6 @@
     args:
       chdir: /usr/local/src/chruby-0.3.8
       creates: /usr/local/share/chruby/chruby.sh
-  - name: install bundler for ruby
-    command: /opt/rubies/ruby-2.1.2/bin/gem install bundler
-    args:
-      creates: /opt/rubies/ruby-2.1.2/bin/bundle
   - name: build ruby 2.1.2
     command: /usr/local/bin/ruby-build 2.1.2 /opt/rubies/ruby-2.1.2
     args:
