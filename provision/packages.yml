@@ -1,5 +1,5 @@
 ---
-- name: apt playbook
+- name: packages playbook
   hosts: devbox
   sudo: true
   tasks:
