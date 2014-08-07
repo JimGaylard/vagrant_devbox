@@ -3,7 +3,7 @@
   hosts: devbox
   tasks:
     - name: clone dotfiles
-      git: repo=git://github.com/JimGaylard/dotfiles.git dest=dotfiles
+      git: repo=git://github.com/JimGaylard/dotfiles.git dest=dotfiles accept_hostkey=yes
     - name: clone vundle for vim
       git: repo=git://github.com/gmarik/Vundle.vim.git dest=.vim/bundle/vundle
     - name: install dotfiles
@@ -12,7 +12,7 @@
         chdir: dotfiles
         creates: ~/.vimrc.bundles
     - name: copy tmp vimrc to install plugins
-      copy: src=files/tmp/.tmpvimrc dest=/tmp/.tmpvimrc
+      copy: src=files/temp/tmp_vimrc dest=/tmp/.tmpvimrc
     - name: install vim plugins
       command: creates=.vim/bundle/nerdtree/README.markdown /usr/bin/vim -u /tmp/.tmpvimrc +PluginInstall! +qall
     - name: link to workspace

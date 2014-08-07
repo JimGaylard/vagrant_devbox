@@ -18,4 +18,5 @@
   - name: install vim
     command: /usr/bin/make install
     args:
+      chdir: /usr/local/src/vim
       creates: /usr/local/bin/vim
