@@ -6,7 +6,7 @@
   - name: clone vim source
     hg: dest=/usr/local/src/vim repo='https://vim.googlecode.com/hg/'
   - name: configure vim
-    command: ./configure
+    command: ./configure --with-features=huge
     args:
       chdir: /usr/local/src/vim
       creates: /usr/local/src/vim/src/auto/config.status
