@@ -14,19 +14,24 @@
   - name: install packages
     apt: "name={{ item }} state=latest"
     with_items:
-      - git
-      - mercurial
       - ctags
+      - freetds-dev
+      - git
       - gnupg2
       - jq
       - keychain
+      - keychain
+      - libmysqlclient-dev
+      - mercurial
       - mtr
       - netcat
       - nmap
+      - ntp
       - silversearcher-ag
-      - tree
-      - keychain
       - sipcalc
+      - tree
+      - virtualbox-guest-dkms
+      - virtualbox-guest-utils
   - name: clone ruby-build from git (more up-to-date)
     git: repo=git://github.com/sstephenson/ruby-build.git dest=/usr/local/src/ruby-build
   - name: install ruby-build
