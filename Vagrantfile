@@ -13,7 +13,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "private_network", ip: "192.168.34.20"
   config.ssh.forward_agent = true
 
-  config.vm.synced_folder HOME, "/host_home"
+  config.vm.synced_folder HOME, "/host_home",
+    type: 'nfs',
+    mount_options: [
+      'vers=3',
+      'udp',
+      'nolock'
+    ]
 
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "provision/main.yml"
@@ -25,7 +31,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provider "virtualbox" do |vb|
     vb.name = "devbox"
     vb.memory = 4096
-    vb.cpus = 4
-    #vb.customize ["modifyvm", :id, "--memory", "4096"]
+    vb.cpus = 1
   end
 end
