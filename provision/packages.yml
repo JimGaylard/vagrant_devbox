@@ -29,6 +29,7 @@
       - ntp
       - silversearcher-ag
       - sipcalc
+      - socat
       - tree
       - virtualbox-guest-dkms
       - virtualbox-guest-utils
