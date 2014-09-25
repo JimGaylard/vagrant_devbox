@@ -26,6 +26,7 @@
       - mtr
       - netcat
       - nmap
+      - nodejs
       - ntp
       - silversearcher-ag
       - sipcalc
