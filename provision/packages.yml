@@ -29,12 +29,16 @@
       - nmap
       - nodejs
       - ntp
+      - python-dev
+      - python-pip
       - silversearcher-ag
       - sipcalc
       - socat
       - tree
       - virtualbox-guest-dkms
       - virtualbox-guest-utils
+  - name: install awscli
+    command: pip install --upgrade awscli
   - name: clone ruby-build from git (more up-to-date)
     git: repo=git://github.com/sstephenson/ruby-build.git dest=/usr/local/src/ruby-build
   - name: install ruby-build
