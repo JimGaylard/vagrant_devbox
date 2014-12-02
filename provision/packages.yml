@@ -9,8 +9,6 @@
     apt: cache_valid_time=3600 update_cache=yes
   - name: install kernel support for aufs
     apt: "name=linux-image-extra-{{ ansible_kernel }} state=latest"
-  - name: install docker
-    shell:  creates=/usr/bin/docker curl -s https://get.docker.io/ubuntu/ | sudo sh
   - name: install packages
     apt: "name={{ item }} state=latest"
     with_items:
@@ -37,6 +35,7 @@
       - tree
       - virtualbox-guest-dkms
       - virtualbox-guest-utils
+      - lxc-docker
   - name: install awscli
     command: pip install --upgrade awscli
   - name: clone ruby-build from git (more up-to-date)
