@@ -3,10 +3,6 @@
   hosts: devbox
   sudo: true
   tasks:
-  - name: install nsenter
-    command: docker run --rm -v /usr/local/bin:/target jpetazzo/nsenter
-    args:
-      creates: /usr/local/bin/nsenter
   - name: install fig
     shell: "curl -L https://github.com/orchardup/fig/releases/download/0.5.2/linux > /usr/local/bin/fig"
     args:
