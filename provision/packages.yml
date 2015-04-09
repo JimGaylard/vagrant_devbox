@@ -13,6 +13,8 @@
     apt: "name={{ item }} state=latest"
     with_items:
       - ansible
+      - libtool
+      - automake
       - cmake
       - ctags
       - freetds-dev
