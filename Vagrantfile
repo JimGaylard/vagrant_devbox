@@ -10,6 +10,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "ubuntu-14.04-cloud-image"
   config.vm.hostname = "vagrant"
 
+  config.vm.provider :virtualbox do |vb|
+    vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+    vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+    vb.name = "devbox"
+    vb.memory = 3072
+    vb.cpus = 2
+  end
+
   config.vm.network "private_network", ip: "192.168.34.20"
   config.ssh.forward_agent = true
 
@@ -26,11 +34,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.inventory_path = "ansible_hosts"
     ansible.limit = "all"
     ansible.verbose = "v"
-  end
-
-  config.vm.provider "virtualbox" do |vb|
-    vb.name = "devbox"
-    vb.memory = 4096
-    vb.cpus = 1
   end
 end
