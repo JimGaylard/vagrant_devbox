@@ -3,11 +3,11 @@
   hosts: devbox
   sudo: true
   tasks:
-  - name: install fig
-    shell: "curl -L https://github.com/orchardup/fig/releases/download/0.5.2/linux > /usr/local/bin/fig"
-    args:
-      creates: /usr/local/bin/fig
-  - name: chmod fig
-    file: path=/usr/local/bin/fig mode=0755
+    - name: install docker-compose
+      shell: "curl -L https://github.com/docker/compose/releases/download/1.2.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose"
+      args:
+        creates: /usr/local/bin/docker-compose
+    - name: chmod docker-compose
+      file: path=/usr/local/bin/docker-compose mode=0755
 
 
