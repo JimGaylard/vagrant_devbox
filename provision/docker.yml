@@ -9,5 +9,3 @@
         creates: /usr/local/bin/docker-compose
     - name: chmod docker-compose
       file: path=/usr/local/bin/docker-compose mode=0755
-
-

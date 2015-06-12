@@ -7,8 +7,6 @@
     copy: src=files/etc/apt/sources.list dest=/etc/apt/sources.list owner=root group=root mode=0644
   - name: update repository cache
     apt: cache_valid_time=3600 update_cache=yes
-  - name: install kernel support for aufs
-    apt: "name=linux-image-extra-{{ ansible_kernel }} state=latest"
   - name: install packages
     apt: "name={{ item }} state=latest"
     with_items:
@@ -22,14 +20,12 @@
       - gnupg2
       - jq
       - keychain
-      - keychain
       - libmysqlclient-dev
       - libtool
       - mercurial
       - mtr
       - netcat
       - nmap
-      - nodejs
       - ntp
       - python-dev
       - python-pip
@@ -84,3 +80,5 @@
     copy: src=files/etc/inputrc dest=/etc/inputrc owner=root mode=0644
   - name: upgrade distro
     apt: upgrade=dist
+  - name: install kernel support for aufs
+    apt: "name=linux-image-extra-{{ ansible_kernel }} state=latest"
