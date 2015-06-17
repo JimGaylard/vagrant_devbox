@@ -3,5 +3,4 @@
   hosts: devbox
 - include: packages.yml
 - include: dotfiles.yml
-- include: vim.yml
 - include: docker.yml

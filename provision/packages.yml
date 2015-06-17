@@ -5,25 +5,28 @@
   tasks:
   - name: set repositories
     copy: src=files/etc/apt/sources.list dest=/etc/apt/sources.list owner=root group=root mode=0644
+  - name: Add Docker key
+    apt_key: keyserver=hkp://keyserver.ubuntu.com:80 id=36A1D7869245C8950F966E92D8576A8BA88D21E9
+  - name: add neovim repository
+    apt_repository: repo='ppa:neovim-ppa/unstable'
   - name: update repository cache
     apt: cache_valid_time=3600 update_cache=yes
   - name: install packages
     apt: "name={{ item }} state=latest"
     with_items:
       - ansible
-      - libtool
       - automake
       - cmake
       - ctags
-      - freetds-dev
       - git
       - gnupg2
       - jq
       - keychain
       - libmysqlclient-dev
       - libtool
-      - mercurial
+      - lxc-docker
       - mtr
+      - neovim
       - netcat
       - nmap
       - ntp
@@ -32,53 +35,15 @@
       - silversearcher-ag
       - sipcalc
       - socat
+      - software-properties-common
       - tree
       - virtualbox-guest-dkms
       - virtualbox-guest-utils
-      - lxc-docker
   - name: install awscli
     command: pip install --upgrade awscli
-  - name: clone ruby-build from git (more up-to-date)
-    git: repo=git://github.com/sstephenson/ruby-build.git dest=/usr/local/src/ruby-build
-  - name: install ruby-build
-    command: ./install.sh
-    args:
-      chdir: /usr/local/src/ruby-build
-      creates: /usr/local/bin/ruby-build
-  - name: make ruby directories
-    file: "path={{ item }} state=directory"
-    with_items:
-    - /opt/rubies/ruby-2.1.2
-    - /opt/rubies/ruby-2.0.0-p481
-    - /opt/rubies/ruby-1.9.3-p547
-  - name: build rubies
-    command: "/usr/local/bin/ruby-build {{ item }} /opt/rubies/ruby-{{ item }}"
-    args:
-      creates: "/opt/rubies/ruby-{{ item }}/bin/ruby"
-    with_items:
-    - 1.9.3-p547
-    - 2.0.0-p481
-    - 2.1.2
-  - name: download chruby
-    command: wget -O /usr/local/src/chruby-0.3.8.tar.gz https://github.com/postmodern/chruby/archive/v0.3.8.tar.gz
-    args:
-      creates: /usr/local/src/chruby-0.3.8.tar.gz
-  - name: untar chruby
-    unarchive: copy=no src=/usr/local/src/chruby-0.3.8.tar.gz dest=/usr/local/src/ creates=/usr/local/src/chruby-0.3.8/
-  - name: install chruby
-    command: /usr/bin/make install
-    args:
-      chdir: /usr/local/src/chruby-0.3.8
-      creates: /usr/local/share/chruby/chruby.sh
-  - name: build ruby 2.1.2
-    command: /usr/local/bin/ruby-build 2.1.2 /opt/rubies/ruby-2.1.2
-    args:
-      creates: /opt/rubies/ruby-2.1.2/bin/ruby
   - name: add vagrant user to docker group
     user: append=yes groups=docker name=vagrant
   - name: set readline defaults
     copy: src=files/etc/inputrc dest=/etc/inputrc owner=root mode=0644
   - name: upgrade distro
     apt: upgrade=dist
-  - name: install kernel support for aufs
-    apt: "name=linux-image-extra-{{ ansible_kernel }} state=latest"
