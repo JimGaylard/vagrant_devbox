@@ -7,6 +7,10 @@
     copy: src=files/etc/apt/sources.list dest=/etc/apt/sources.list owner=root group=root mode=0644
   - name: Add Docker key
     apt_key: keyserver=hkp://keyserver.ubuntu.com:80 id=36A1D7869245C8950F966E92D8576A8BA88D21E9
+  - name: setup docker repository
+    copy: src=files/etc/apt/sources.list.d/docker.list dest=/etc/apt/sources.list.d/docker.list owner=root group=root mode=0644
+  - name: add git repository
+    apt_repository: repo='ppa:git-core/ppa'
   - name: add neovim repository
     apt_repository: repo='ppa:neovim-ppa/unstable'
   - name: update repository cache
@@ -47,3 +51,5 @@
     copy: src=files/etc/inputrc dest=/etc/inputrc owner=root mode=0644
   - name: upgrade distro
     apt: upgrade=dist
+  - name: install kernel support for aufs
+    apt: "name=linux-image-extra-{{ ansible_kernel }} state=latest"
