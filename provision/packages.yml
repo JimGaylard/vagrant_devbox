@@ -24,11 +24,14 @@
       - ctags
       - git
       - gnupg2
+      - haskell-platform
       - jq
       - keychain
       - libmysqlclient-dev
       - libtool
+      - libtool
       - lxc-docker
+      - mercurial
       - mtr
       - neovim
       - netcat

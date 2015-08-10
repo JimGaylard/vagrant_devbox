@@ -26,6 +26,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "private_network", ip: "192.168.34.25"
   config.ssh.forward_agent = true
 
+  config.nfs.map_uid = Process.uid
+  config.nfs.map_gid = Process.gid
+
   config.vm.synced_folder HOME, "/host_home",
     type: 'nfs',
     mount_options: [
