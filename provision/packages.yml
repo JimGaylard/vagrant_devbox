@@ -47,7 +47,7 @@
       - virtualbox-guest-dkms
       - virtualbox-guest-utils
   - name: install awscli
-    command: pip install --upgrade awscli
+    pip: name=awscli state=latest
   - name: add vagrant user to docker group
     user: append=yes groups=docker name=vagrant
   - name: set readline defaults
