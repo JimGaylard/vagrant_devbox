@@ -13,6 +13,8 @@
     apt_repository: repo='ppa:git-core/ppa'
   - name: add neovim repository
     apt_repository: repo='ppa:neovim-ppa/unstable'
+  - name: add openjdk repository
+    apt_repository: repo='ppa:openjdk-r/ppa'
   - name: update repository cache
     apt: cache_valid_time=3600 update_cache=yes
   - name: install packages
@@ -38,8 +40,10 @@
       - netcat
       - nmap
       - ntp
+      - openjdk-7-jre-headless
       - python-dev
       - python-pip
+      - scala
       - silversearcher-ag
       - sipcalc
       - socat
