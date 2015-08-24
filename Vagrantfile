@@ -16,6 +16,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box_download_checksum = "1b839c754865f5d8998b1ac7a0edde93"
 
   config.vm.provider :virtualbox do |vb|
+    # Use this this to debug startup problems if necessary.
+    # vb.gui = true
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
     vb.name = "devbox"
