@@ -20,6 +20,7 @@
     with_items:
       - ansible
       - automake
+      - btrfs-tools
       - cmake
       - ctags
       - git
