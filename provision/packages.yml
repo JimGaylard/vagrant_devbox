@@ -6,7 +6,7 @@
   - name: set repositories
     copy: src=files/etc/apt/sources.list dest=/etc/apt/sources.list owner=root group=root mode=0644
   - name: Add Docker key
-    apt_key: keyserver=hkp://keyserver.ubuntu.com:80 id=36A1D7869245C8950F966E92D8576A8BA88D21E9
+    apt_key: keyserver=hkp://p80.pool.sks-keyservers.net:80 id=58118E89F3A912897C070ADBF76221572C52609D
   - name: setup docker repository
     copy: src=files/etc/apt/sources.list.d/docker.list dest=/etc/apt/sources.list.d/docker.list owner=root group=root mode=0644
   - name: add git repository
@@ -23,6 +23,7 @@
       - btrfs-tools
       - cmake
       - ctags
+      - docker-engine
       - git
       - gnupg2
       - haskell-platform
@@ -31,7 +32,6 @@
       - libmysqlclient-dev
       - libtool
       - libtool
-      - lxc-docker
       - mercurial
       - mtr
       - neovim
@@ -55,5 +55,3 @@
     copy: src=files/etc/inputrc dest=/etc/inputrc owner=root mode=0644
   - name: upgrade distro
     apt: upgrade=dist
-  - name: install kernel support for aufs
-    apt: "name=linux-image-extra-{{ ansible_kernel }} state=latest"
