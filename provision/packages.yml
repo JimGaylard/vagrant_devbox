@@ -34,13 +34,14 @@
       - libmysqlclient-dev
       - libtool
       - libtool
+      - mc
       - mercurial
       - mtr
       - neovim
       - netcat
       - nmap
       - ntp
-      - openjdk-7-jre-headless
+      - openjdk-8-jre-headless
       - python-dev
       - python-pip
       - scala
