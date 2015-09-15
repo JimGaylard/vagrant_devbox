@@ -1,1 +1,1 @@
-devbox ansible_ssh_port=2222 ansible_ssh_host=localhost
+dev ansible_ssh_port=2222 ansible_ssh_host=localhost

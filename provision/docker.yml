@@ -1,6 +1,6 @@
 ---
 - name: docker playbook
-  hosts: devbox
+  hosts: dev
   sudo: true
   tasks:
     - name: install docker-compose

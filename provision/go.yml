@@ -1,0 +1,17 @@
+- name: install go
+  sudo: true
+  hosts: dev
+  tasks:
+    - name: download go
+      get_url: url=https://storage.googleapis.com/golang/go1.5.linux-amd64.tar.gz
+        dest=/usr/local/src
+        force=no
+      register: new_archive
+    - name: create /usr/local/go
+      file: path=/usr/local/go state=directory
+    - name: unarchive go
+      unarchive: src=/usr/local/src/go1.5.linux-amd64.tar.gz
+        dest=/usr/local
+        copy=no
+      when: new_archive|changed
+

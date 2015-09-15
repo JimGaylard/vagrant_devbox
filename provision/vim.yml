@@ -1,0 +1,13 @@
+- name: install vim plugins
+  hosts: dev
+  tasks:
+    - name: clone neobundle for vim
+      git: repo=git://github.com/Shougo/neobundle.vim.git dest=.vim/bundle/neobundle.vim
+    - name: install vim plugins
+      command: creates=.vim/bundle/unite.vim/README.md chdir=.vim/bundle/neobundle.vim bin/neoinstall
+    - name: install YouCompleteMe
+      command: chdir=.vim/bundle/YouCompleteMe ./install.py --clang-completer
+        creates=.vim/bundle/YouCompleteMe/third_party/ycmd/ycm_core.so
+    - name: install python support for neovim
+      sudo: true
+      command: pip2 install neovim

@@ -1,6 +1,6 @@
 ---
 - name: packages playbook
-  hosts: devbox
+  hosts: dev
   sudo: true
   tasks:
   - name: set repositories
@@ -29,6 +29,7 @@
       - git
       - gnupg2
       - haskell-platform
+      - htop
       - jq
       - keychain
       - libmysqlclient-dev

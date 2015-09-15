@@ -1,6 +1,8 @@
 ---
 - name: vagrant dev box
-  hosts: devbox
+  hosts: dev
 - include: packages.yml
+- include: go.yml
 - include: dotfiles.yml
+- include: vim.yml
 - include: docker.yml

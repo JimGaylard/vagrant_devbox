@@ -1,20 +1,14 @@
 ---
 - name: install dotfiles
-  hosts: devbox
+  hosts: dev
   tasks:
     - name: clone dotfiles
       git: repo=git://github.com/JimGaylard/dotfiles.git dest=dotfiles accept_hostkey=yes
-    - name: clone neobundle for vim
-      git: repo=git://github.com/Shougo/neobundle.vim.git dest=.vim/bundle/neobundle.vim
     - name: install dotfiles
       command: ./makesymlinks.sh
       args:
         chdir: dotfiles
         creates: ~/.vimrc.bundles
-    - name: copy tmp vimrc to install plugins
-      copy: src=files/temp/tmp_vimrc dest=/tmp/.tmpvimrc
-    - name: install vim plugins
-      command: creates=.vim/bundle/unite.vim/README.md /usr/bin/nvim -u /tmp/.tmpvimrc +PluginInstall! +qall
     - name: link to workspace
       file: src=/host_home/workspace dest=workspace state=link
     - name: link to Dropbox
