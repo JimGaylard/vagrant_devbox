@@ -50,6 +50,7 @@
       - sipcalc
       - socat
       - software-properties-common
+      - traceroute
       - tree
       - virtualbox-guest-dkms
       - virtualbox-guest-utils
