@@ -6,8 +6,7 @@
     - name: install vim plugins
       command: creates=.vim/bundle/unite.vim/README.md chdir=.vim/bundle/neobundle.vim bin/neoinstall
     - name: install YouCompleteMe
-      command: chdir=.vim/bundle/YouCompleteMe ./install.py --clang-completer
-        creates=.vim/bundle/YouCompleteMe/third_party/ycmd/ycm_core.so
+      command: chdir=.vim/bundle/YouCompleteMe creates=~/.vim/bundle/YouCompleteMe/third_party/ycmd/ycm_core.so ./install.py --clang-completer
     - name: install python support for neovim
       sudo: true
-      command: pip2 install neovim
+      pip: name=neovim state=latest
