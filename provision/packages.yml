@@ -23,6 +23,7 @@
       - ansible
       - automake
       - btrfs-tools
+      - build-essential
       - cmake
       - clang
       - ctags
