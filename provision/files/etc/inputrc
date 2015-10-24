@@ -1,2 +1,4 @@
 set mark-directories On
 set mark-symlinked-directories On
+set editing-mode vi
+set keymap vi-command
