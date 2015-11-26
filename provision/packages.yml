@@ -54,8 +54,6 @@
       - software-properties-common
       - traceroute
       - tree
-      - virtualbox-guest-dkms
-      - virtualbox-guest-utils
   - name: install awscli
     pip: name=awscli state=latest
   - name: add vagrant user to docker group
