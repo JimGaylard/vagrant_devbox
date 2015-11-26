@@ -3,7 +3,7 @@
   hosts: dev
   tasks:
     - name: clone dotfiles
-      git: repo=git://github.com/JimGaylard/dotfiles.git dest=dotfiles accept_hostkey=yes
+      git: repo=ssh://git@github.com/JimGaylard/dotfiles.git dest=dotfiles accept_hostkey=yes
     - name: install dotfiles
       command: ./makesymlinks.sh
       args:
