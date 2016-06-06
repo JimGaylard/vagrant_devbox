@@ -34,8 +34,8 @@
       - htop
       - jq
       - keychain
+      - libevent-dev
       - libmysqlclient-dev
-      - libtool
       - libtool
       - mc
       - mercurial

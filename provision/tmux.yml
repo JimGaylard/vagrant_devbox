@@ -1,0 +1,21 @@
+- name: install tmux
+  hosts: dev
+  sudo: true
+  tasks:
+    - name: add tmux tarball
+      unarchive: copy=yes src=files/usr/local/src/tmux-2.2.tar.gz dest=/usr/local/src owner=root group=root mode=775 creates=/usr/local/bin/tmux
+    - name: configure tmux
+      command: ./configure
+      args:
+        chdir: /usr/local/src/tmux-2.2
+        creates: /usr/local/bin/tmux
+    - name: make tmux
+      command: /usr/bin/make
+      args:
+        chdir: /usr/local/src/tmux-2.2
+        creates: /usr/local/bin/tmux
+    - name: install tmux
+      command: /usr/bin/make install
+      args:
+        chdir: /usr/local/src/tmux-2.2
+        creates: /usr/local/bin/tmux
