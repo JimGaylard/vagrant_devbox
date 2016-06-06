@@ -5,9 +5,9 @@
   tasks:
     - name: install docker-compose
       get_url:
-        url="https://github.com/docker/compose/releases/download/1.5.2/docker-compose-Linux-x86_64" dest=/usr/local/bin/docker-compose
+        url="https://github.com/docker/compose/releases/download/1.7.1/docker-compose-Linux-x86_64" dest=/usr/local/bin/docker-compose
     - name: chmod docker-compose
       file: path=/usr/local/bin/docker-compose mode=0755
     - name: install bash-completion for docker-compose
       get_url:
-        url=https://raw.githubusercontent.com/docker/compose/1.4.2/contrib/completion/bash/docker-compose dest=/etc/bash_completion.d/docker-compose force=yes
+        url=https://raw.githubusercontent.com/docker/compose/1.7.1/contrib/completion/bash/docker-compose dest=/etc/bash_completion.d/docker-compose force=yes
