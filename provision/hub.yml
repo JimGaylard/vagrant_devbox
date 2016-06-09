@@ -8,11 +8,6 @@
         src="https://github.com/github/hub/releases/download/v2.2.3/hub-linux-amd64-2.2.3.tgz" dest=/usr/local/src copy=no
     - name: install hub
       command: ./install
-        args:
-          - 
-    #- name: chmod 
-    #
-    #  file: path=/usr/local/bin/docker-compose mode=0755
-    #- name: install bash-completion for docker-compose
-    #  get_url:
-    #    url=https://raw.githubusercontent.com/docker/compose/1.7.1/contrib/completion/bash/docker-compose dest=/etc/bash_completion.d/docker-compose force=yes
+      args:
+        chdir: /usr/local/src/hub-linux-amd64-2.2.3
+        creates: /usr/local/bin/hub
