@@ -7,13 +7,14 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   HOME = ENV['HOME']
 
+  #config.vbguest.auto_update = false
 
-  config.vm.box = "trusty-server-cloudimg-amd64-vagrant-disk1.box"
-  config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
+  config.vm.box = "wily-server-cloudimg-amd64-vagrant-disk1"
+  config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/wily/current/wily-server-cloudimg-amd64-vagrant-disk1.box"
 
   config.vm.hostname = "vagrant"
   config.vm.box_download_checksum_type = "md5"
-  config.vm.box_download_checksum = "1b839c754865f5d8998b1ac7a0edde93"
+  config.vm.box_download_checksum = "cb0dd27b7a9fb4ff81c03d1751e05bb4"
 
   config.vm.provider :virtualbox do |vb|
     # Use this this to debug startup problems if necessary.
