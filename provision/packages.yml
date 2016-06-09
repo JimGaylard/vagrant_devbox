@@ -17,6 +17,10 @@
     apt_repository: repo='ppa:openjdk-r/ppa'
   - name: update repository cache
     apt: cache_valid_time=3600 update_cache=yes
+  - name: Add Stack key
+    apt_key: keyserver=keyserver.ubuntu.com id=575159689BEFB442
+  - name: setup stack repository
+    copy: src=files/etc/apt/sources.list.d/fpco.list dest=/etc/apt/sources.list.d/fpco.list owner=root group=root mode=0644
   - name: install packages
     apt: "name={{ item }} state=latest"
     with_items:
@@ -44,6 +48,7 @@
       - netcat
       - nmap
       - ntp
+      - ntpdate
       - openjdk-8-jre-headless
       - python-dev
       - python-pip
@@ -52,6 +57,8 @@
       - sipcalc
       - socat
       - software-properties-common
+      - stack
+      - tig
       - traceroute
       - tree
   - name: install awscli
