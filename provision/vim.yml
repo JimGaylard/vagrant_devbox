@@ -5,6 +5,3 @@
       git: repo=git://github.com/Shougo/neobundle.vim.git dest=.config/nvim/bundle/neobundle.vim
     - name: install vim plugins
       command: creates=.config/nvim/bundle/unite.vim/README.md chdir=.config/nvim/bundle/neobundle.vim bin/neoinstall
-    - name: install python support for neovim
-      sudo: true
-      pip: name=neovim state=latest
