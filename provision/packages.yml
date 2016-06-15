@@ -63,6 +63,8 @@
       - tree
   - name: install awscli
     pip: name=awscli state=latest
+  - name: install neovim python client
+    pip: name=neovim state=latest
   - name: add vagrant user to docker group
     user: append=yes groups=docker name=vagrant
   - name: set readline defaults
