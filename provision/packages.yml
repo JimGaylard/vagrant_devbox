@@ -15,12 +15,12 @@
     apt_repository: repo='ppa:neovim-ppa/unstable'
   - name: add openjdk repository
     apt_repository: repo='ppa:openjdk-r/ppa'
-  - name: update repository cache
-    apt: cache_valid_time=3600 update_cache=yes
   - name: Add Stack key
     apt_key: keyserver=keyserver.ubuntu.com id=575159689BEFB442
   - name: setup stack repository
     copy: src=files/etc/apt/sources.list.d/fpco.list dest=/etc/apt/sources.list.d/fpco.list owner=root group=root mode=0644
+  - name: update repository cache
+    apt: cache_valid_time=3600 update_cache=yes
   - name: install packages
     apt: "name={{ item }} state=latest"
     with_items:
@@ -77,8 +77,8 @@
     pip: name=awscli state=latest
   - name: install neovim python client
     pip: name=neovim state=latest
-  - name: add vagrant user to docker group
-    user: append=yes groups=docker name=vagrant
+  - name: add ubuntu user to docker group
+    user: append=yes groups=docker name=ubuntu
   - name: set readline defaults
     copy: src=files/etc/inputrc dest=/etc/inputrc owner=root mode=0644
   - name: upgrade distro

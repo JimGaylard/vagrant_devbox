@@ -1,4 +1,4 @@
-deb http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu/ wily main restricted universe
-deb http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu/ wily-updates main restricted universe
-deb http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu/ wily-backports main restricted universe
-deb http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu/ wily-security main restricted universe
+deb http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu/ xenial main restricted universe
+deb http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu/ xenial-updates main restricted universe
+deb http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu/ xenial-backports main restricted universe
+deb http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu/ xenial-security main restricted universe

@@ -9,12 +9,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   #config.vbguest.auto_update = false
 
-  config.vm.box = "wily-server-cloudimg-amd64-vagrant-disk1"
-  config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/wily/current/wily-server-cloudimg-amd64-vagrant-disk1.box"
+  config.vm.box = "xenial-server-cloudimg-amd64-vagrant-disk1"
+  config.vm.box_url = "https://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-vagrant.box"
 
   config.vm.hostname = "vagrant"
-  config.vm.box_download_checksum_type = "md5"
-  config.vm.box_download_checksum = "cb0dd27b7a9fb4ff81c03d1751e05bb4"
 
   config.vm.provider :virtualbox do |vb|
     # Use this this to debug startup problems if necessary.
