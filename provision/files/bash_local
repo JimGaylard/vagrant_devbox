@@ -1,0 +1,15 @@
+#!/bin/bash
+
+eval $(keychain --eval $HOME/.ssh/id_rsa.pub $HOME/.ssh/rea-git_id_rsa)
+
+# bash-my-aws
+for f in $HOME/.bash-my-aws/lib/*-functions; do source $f; done
+
+# golang
+export GOPATH=$HOME/workspace/go
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOROOT/bin
+
+# chruby
+source /usr/local/share/chruby/chruby.sh
+chruby 2
