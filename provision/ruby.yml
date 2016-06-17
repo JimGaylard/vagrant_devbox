@@ -1,0 +1,23 @@
+---
+- name: ruby playbook
+  hosts: dev
+  sudo: true
+  tasks:
+    - name: download ruby-install
+      unarchive: src=https://github.com/postmodern/ruby-install/archive/v0.6.0.tar.gz dest=/usr/local/src copy=no creates=/usr/local/src/ruby-install-0.6.0
+    - name: install ruby-install
+      command: make install
+      args:
+        chdir: /usr/local/src/ruby-install-0.6.0
+        creates: /usr/local/bin/ruby-install
+    - name: download chruby
+      unarchive: src=https://github.com/postmodern/chruby/archive/v0.3.9.tar.gz dest=/usr/local/src copy=no creates=/usr/local/src/chruby-0.3.9
+    - name: install chruby
+      command: make install
+      args:
+        chdir: /usr/local/src/chruby-0.3.9
+        creates: /usr/local/bin/chruby-exec
+    - name: install latest ruby
+      command: ruby-install --rubies-dir /opt/rubies ruby
+      #args:
+        #creates: /opt/rubies/
