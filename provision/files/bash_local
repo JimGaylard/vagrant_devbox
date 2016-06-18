@@ -1,6 +1,6 @@
 #!/bin/bash
 
-eval $(keychain --eval $HOME/.ssh/id_rsa.pub $HOME/.ssh/rea-git_id_rsa)
+eval $(keychain --noask --eval $HOME/.ssh/id_rsa.pub $HOME/.ssh/rea-git_id_rsa)
 
 # bash-my-aws
 for f in $HOME/.bash-my-aws/lib/*-functions; do source $f; done
