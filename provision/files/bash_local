@@ -13,3 +13,6 @@ export PATH=$PATH:$GOROOT/bin
 # chruby
 source /usr/local/share/chruby/chruby.sh
 chruby 2
+
+# haskell
+export PATH=$PATH:$HOME/.local/bin
