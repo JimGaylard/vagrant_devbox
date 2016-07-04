@@ -1,0 +1,15 @@
+tags
+tmp/
+*.log
+*.swp
+*.swn
+*.swo
+.idea/
+.bundle
+.config
+.yardoc
+.env
+coverage
+rdoc
+TODO*
+.DS_Store

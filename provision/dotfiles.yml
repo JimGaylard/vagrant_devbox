@@ -15,5 +15,9 @@
       file: src=/host_home/Dropbox dest=dropbox state=link force=yes
     - name: add bash_local skeleton
       copy: src=files/bash_local dest=.bash_local force=no
+    - name: add gitignore
+      copy: src=files/gitignore_global dest=.gitignore_global force=no
+    - name: add git config
+      copy: src=files/gitconfig dest=.gitconfig force=no
     - name: clone bash-my-aws
       git: repo=ssh://git@github.com/realestate-com-au/bash-my-aws.git dest=.bash-my-aws accept_hostkey=yes
