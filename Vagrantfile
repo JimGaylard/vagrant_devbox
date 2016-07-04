@@ -14,6 +14,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.hostname = "vagrant"
 
+  config.ssh.username = 'ubuntu'
+
   config.vm.provider :virtualbox do |vb|
     # Use this this to debug startup problems if necessary.
     # vb.gui = true
