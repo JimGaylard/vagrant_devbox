@@ -6,3 +6,5 @@
 - include: dotfiles.yml
 - include: vim.yml
 - include: docker.yml
+- include: hub.yml
+- include: tmux.yml
