@@ -51,7 +51,6 @@
       - ntpdate
       - openjdk-8-jre-headless
       - python-dev
-      - python-pip
       - scala
       - silversearcher-ag
       - sipcalc
@@ -61,6 +60,10 @@
       - tig
       - traceroute
       - tree
+  - name: download pip
+    get_url: url=https://bootstrap.pypa.io/get-pip.py dest=/usr/local/src/get-pip.py mode=0554
+  - name: install pip
+    command: /usr/local/src/get-pip.py
   - name: install awscli
     pip: name=awscli state=latest
   - name: install neovim python client
