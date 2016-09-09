@@ -64,6 +64,15 @@
     get_url: url=https://bootstrap.pypa.io/get-pip.py dest=/usr/local/src/get-pip.py mode=0554
   - name: install pip
     command: /usr/local/src/get-pip.py
+  - name: Stack Global Setup
+    command: stack setup chdir=~/ creates=~/.stack/global-project/stack.yaml
+  - name: Set up Essential Haskell Packages
+    command: stack install {{ item }} creates=~/.local/bin/{{ item }}
+    with_items:
+      - hdevtools
+      - ghc-mod
+      - hlint
+      - HUnit
   - name: install awscli
     pip: name=awscli state=latest
   - name: install neovim python client
