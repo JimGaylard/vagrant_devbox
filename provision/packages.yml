@@ -26,7 +26,6 @@
     with_items:
       - ansible
       - automake
-      - btrfs-tools
       - build-essential
       - cmake
       - clang
@@ -34,7 +33,6 @@
       - docker-engine
       - git
       - gnupg2
-      - haskell-platform
       - htop
       - jq
       - keychain
@@ -47,11 +45,11 @@
       - neovim
       - netcat
       - nmap
+      - npm
       - ntp
       - ntpdate
       - openjdk-8-jre-headless
       - python-dev
-      - scala
       - silversearcher-ag
       - sipcalc
       - socat

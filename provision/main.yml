@@ -7,6 +7,7 @@
       raw: sudo apt-get install -y python-simplejson
 - include: packages.yml
 - include: go.yml
+- include: ruby.yml
 - include: dotfiles.yml
 - include: vim.yml
 - include: docker.yml

@@ -19,5 +19,5 @@
         creates: /usr/local/bin/chruby-exec
     - name: install latest ruby
       command: ruby-install --rubies-dir /opt/rubies ruby
-      #args:
-        #creates: /opt/rubies/
+      args:
+        creates: /opt/rubies/
