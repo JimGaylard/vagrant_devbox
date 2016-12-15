@@ -24,11 +24,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.name = "dev"
     vb.memory = 3072
     vb.cpus = 2
-    v.customize [
-      "storagectl", :id,
-      "--name", "SATA Controller",
-      "--hostiocache", "on"
-    ]
   end
 
   config.vm.network "private_network", ip: "192.168.34.25"
