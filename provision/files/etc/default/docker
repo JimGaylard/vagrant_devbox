@@ -1,0 +1,11 @@
+# Docker Upstart and SysVinit configuration file
+
+#
+# THIS FILE DOES NOT APPLY TO SYSTEMD
+#
+#   Please see the documentation for "systemd drop-ins":
+#   https://docs.docker.com/engine/articles/systemd/
+#
+
+# Use DOCKER_OPTS to modify the daemon startup options.
+DOCKER_OPTS="--storage-driver=aufs --dns 8.8.8.8 --dns 8.8.4.4"
