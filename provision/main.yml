@@ -1,6 +1,10 @@
 ---
 - name: vagrant dev box
   hosts: dev
+  gather_facts: false
+  pre_tasks:
+    - name: install python for ansible
+      raw: sudo apt-get install -y python-simplejson
 - include: packages.yml
 - include: go.yml
 - include: dotfiles.yml
