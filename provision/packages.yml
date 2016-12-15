@@ -1,7 +1,7 @@
 ---
 - name: packages playbook
   hosts: dev
-  sudo: true
+  become: true
   tasks:
   - name: set repositories
     copy: src=files/etc/apt/sources.list dest=/etc/apt/sources.list owner=root group=root mode=0644
@@ -63,8 +63,10 @@
   - name: install pip
     command: /usr/local/src/get-pip.py
   - name: Stack Global Setup
+    become: false
     command: stack setup chdir=~/
   - name: Set up Essential Haskell Packages
+    become: false
     command: stack install {{ item }} creates=~/.local/bin/{{ item }}
     with_items:
       - hdevtools

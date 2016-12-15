@@ -1,7 +1,7 @@
 ---
 - name: ruby playbook
   hosts: dev
-  sudo: true
+  become: true
   tasks:
     - name: download ruby-install
       unarchive: src=https://github.com/postmodern/ruby-install/archive/v0.6.0.tar.gz dest=/usr/local/src copy=no creates=/usr/local/src/ruby-install-0.6.0

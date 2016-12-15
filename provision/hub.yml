@@ -1,7 +1,7 @@
 ---
 - name: hub playbook
   hosts: dev
-  sudo: true
+  become: true
   tasks:
     - name: fetch and unarchive hub
       unarchive:

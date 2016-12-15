@@ -1,5 +1,5 @@
 - name: install go
-  sudo: true
+  become: true
   hosts: dev
   tasks:
     - name: download go

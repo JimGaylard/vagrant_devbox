@@ -1,6 +1,6 @@
 - name: install tmux
   hosts: dev
-  sudo: true
+  become: true
   tasks:
     - name: add tmux tarball
       unarchive: copy=yes src=files/usr/local/src/tmux-2.2.tar.gz dest=/usr/local/src owner=root group=root mode=775 creates=/usr/local/bin/tmux

@@ -1,7 +1,7 @@
 ---
 - name: docker playbook
   hosts: dev
-  sudo: true
+  become: true
   tasks:
     - name: config for aufs
       copy: src=files/etc/default/docker dest=/etc/default/docker
